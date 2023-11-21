@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        table{
+            position: relative;
+            min-width: 300px;
+            min-height: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 180px;
+            border-radius: 20px;
+            background-color: #0dc8dd   ;
+            padding-top: 40;
+            box-shadow: 20px 20px 60px rgba(207, 39, 39, 0.045), 
+            10px 10px 70px rgba(13, 9, 133, 0.093),
+            inset -5px -5px 15px rgba(13, 9, 133, 0.093),
+            inset 5px 5px 15px rgba(13, 9, 133, 0.093),
+            
+            
+                     
+        }  
+        input[type="button"]{
+            width: 100%;
+            padding: 20px 40px;
+            background: transparent;
+            color: #0afbeb;
+            background: linear-gradient(180deg,#2f2f2f,#3f3f3f);
+            box-shadow: inset -8px 0 8px rgba(0,0,0,0.15),
+            inset 0 -8px 8px rgba(0,0,0,0.25),
+            0 0 0 2px rgba(0,0,0,0.75),
+            10px 20px 25px rgba(0,0,0,0.3);
+            font-size: 24px;
+            border: 0;
+            outline: 0;
+            cursor: pointer; 
+            font-weight: 400;
+            border-radius: 10px;
+           
+        }
+        input[type="button"]:hover {
+            background: linear-gradient(80deg,#434040,#8b8888);
+        }
+        input[type="text"]{
+            padding: 20px 30px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            outline: none;
+            border:none;
+            border-radius: 10px;
+            background: #ffefde;
+            box-shadow: 0 0 0 2px rgba(0,0,0,0.75);
+            text-align: right;
+        }
+    </style>
+</head>
+<body style="background-image: url(nxp.jpg);">
+    <table>
+        <tr>
+            <td colspan="3">
+                <input type="text" id="result" disabled>
+            </td>
+            <td><input type="button" onclick="clearinput()" value="C"></td>
+           
+        </tr>
+        <tr>
+            <td><input type="button" onclick="appendNumber(1)" value="1"></td>
+            <td><input type="button" onclick="appendNumber(2)" value="2"></td>
+            <td><input type="button" onclick="appendNumber(3)" value="3"></td>
+            <td><input type="button" onclick="divide()" value="/"></td>
+        </tr>
+        <tr>
+            <td><input type="button" onclick="appendNumber(4)" value="4"></td>
+            <td><input type="button" onclick="appendNumber(5)" value="5"></td>
+            <td><input type="button" onclick="appendNumber(6)" value="6"></td>
+            <td><input type="button" onclick="multiply()" value="*"></td>
+        </tr>
+        <tr>
+            
+            <td><input type="button" onclick="appendNumber(7)" value="7"></td>
+            <td><input type="button" onclick="appendNumber(8)" value="8"></td>
+            <td><input type="button" onclick="appendNumber(9)" value="9"></td>
+            <td><input type="button" onclick="minus()" value="-"></td>
+        </tr>
+        <tr>
+           
+            <td><input type="button" onclick="appendNumber('.')" value="."></td>
+            <td><input type="button" onclick="appendNumber(0)" value="0"></td>
+            <td><input type="button" onclick="calculate()" value="="></td>
+            <td><input type="button" onclick="add()" value="+"></td>
+        </tr>
+    </table>
+
+    <script>
+        let currentInput = "";
+        let currentOperator = "";
+
+        function clearinput() {
+            currentInput = '';
+            currentOperator= '';
+            document.getElementById('result').value = '';
+        }
+        
+        function appendNumber(number) {
+            currentInput += number;
+            document.getElementById('result').value = currentInput;
+        }
+
+        function add() {
+            currentOperator = "+";
+            currentInput += currentOperator;
+            document.getElementById('result').value = currentInput;
+        }
+
+        function minus() {
+            currentOperator = "-";
+            currentInput += currentOperator;
+            document.getElementById('result').value = currentInput;
+        }
+
+        function multiply() {
+            currentOperator = "*";
+            currentInput += currentOperator;
+            document.getElementById('result').value = currentInput;
+        }
+
+        function divide() {
+            currentOperator = "/";
+            currentInput += currentOperator;
+            document.getElementById('result').value = currentInput;
+        }
+
+        function calculate() {
+            const result = eval(currentInput);
+            console.log(result);
+            document.getElementById('result').value = result;
+            currentInput.toString();
+            currentOperator = '';
+        }
+    </script>
+
+</body>
+</html>
